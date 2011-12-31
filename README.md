@@ -23,9 +23,9 @@ There is also a file called `shifty.formulas.js` that contains a bunch of ready-
 Using Shifty
 ---
 
-If you just want raw tweening functionality, all you need is `shifty.core.js`.  This is in the `src` directory.  Just drop that in your page, and you are ready to go.  To use any Shifty extensions or additions, simply load them after `shifty.core.js`.
+Shifty has no dependencies, so you can just load [/dist/shifty.min.js](https://github.com/jeremyckahn/shifty/blob/master/dist/shifty.min.js) to start using it.  This file has all of the extensions baked in.  If you only need raw tweening functionality ([shifty.core.js](https://github.com/jeremyckahn/shifty/blob/master/src/shifty.core.js)), you can easily build that without the extensions (please see the "Building Shifty" section in this README).
 
-Shifty, with all extensions come prepackaged in `shifty.js` in the root of the project directory, and also minified in the `builds` directory as `shifty.min.js`.
+In other words, you can use whatever components you want.  Just make sure you build it first, don't just copy and paste the files inside the `/src` directory.
 
 API
 ===
@@ -335,6 +335,7 @@ For more options check the help:
 node build -h
 ```
 
+All required files will be included automatically (such as `shifty.core.js`).
 You can find a ready-to-use build of the project at `dist/shifty.min.js`. This
 build includes the core and all extensions. Feel free to customize the build
 for your own needs. Shifty uses [SemVer](http://semver.org/).
@@ -362,6 +363,16 @@ Shifty can also be used on NodeJS:
 var Tweenable = require('./shifty');
 ...
 ```
+
+
+Contributors
+---
+
+Take a peek at the [Network](https://github.com/jeremyckahn/shifty/network)
+page to see all of the Shifty contributors, but
+[@millermedeiros](https://github.com/millermedeiros) deserves particular
+recogintion for his patches to make Shifty compatible with Node and for
+rewriting the build system.
 
 
 Shifty in Use
