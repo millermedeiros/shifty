@@ -43,14 +43,13 @@ var
   _exec = require('child_process').exec,
   _distBaseName = _path.join(__dirname, DIST_FOLDER, DIST_NAME),
   _distFileName = _distBaseName + '.js',
-  _distFileNameMin = _distBaseName + '.min.js',
-  _buildVerOverride = '';
+  _distFileNameMin = _distBaseName + '.min.js';
 
 _cli
   .version('0.1.1')
   .option('-e, --exclude <modules>', 'Comma separated list of modules to be excluded from the build (eg. queue,color,css_units).', parseList)
   .option('-i, --include <modules>', 'List of modules to be included. Defaults to all modules. (eg. formulas,color)', parseList)
-  .option('--buildver <build version>', 'A string representing the build version to record in the source (eg. 5.0.2)', parseList)
+  .option('--buildver <build version>', 'A string representing the build version to record in the source (eg. 5.0.2)')
   .option('--silent', 'Don\'t display messages.')
   .option('--nosize', 'Don\'t display size info. Avoid errors on Windows or other envs where `cat`, `gzip` and `wc` aren\'t available.')
   .parse(process.argv);
@@ -134,8 +133,9 @@ function concatFiles(fileList) {
 }
 
 
-if (_cli.buildver) {
-  replacements.version = _cli.buildver;
+if (! _cli.buildver ) {
+  console.log('  ERROR: Please provide a version number (with "--buildver").');
+  process.exit(1); //exit with error
 }
 
 _fs.writeFileSync(_distFileName, stache(concatFiles(getFileList()), replacements));
